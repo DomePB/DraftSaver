@@ -30,13 +30,15 @@
         {
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            Select = new Button();
             panel1 = new Panel();
+            Champions = new ListBox();
             R5Pick = new Label();
             R4Pick = new Label();
             R3Pick = new Label();
             R2Pick = new Label();
             R1Pick = new Label();
-            label5 = new Label();
+            B1Pick = new Label();
             B5Pick = new Label();
             B4Pick = new Label();
             B3Pick = new Label();
@@ -44,7 +46,6 @@
             B1Champ = new Label();
             tabPage2 = new TabPage();
             tabPage3 = new TabPage();
-            Champions = new ListBox();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             panel1.SuspendLayout();
@@ -64,13 +65,14 @@
             // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(Select);
             tabPage1.Controls.Add(panel1);
             tabPage1.Controls.Add(R5Pick);
             tabPage1.Controls.Add(R4Pick);
             tabPage1.Controls.Add(R3Pick);
             tabPage1.Controls.Add(R2Pick);
             tabPage1.Controls.Add(R1Pick);
-            tabPage1.Controls.Add(label5);
+            tabPage1.Controls.Add(B1Pick);
             tabPage1.Controls.Add(B5Pick);
             tabPage1.Controls.Add(B4Pick);
             tabPage1.Controls.Add(B3Pick);
@@ -84,6 +86,16 @@
             tabPage1.Text = "Draft";
             tabPage1.UseVisualStyleBackColor = true;
             // 
+            // Select
+            // 
+            Select.Location = new Point(663, 786);
+            Select.Name = "Select";
+            Select.Size = new Size(375, 56);
+            Select.TabIndex = 13;
+            Select.Text = "Select";
+            Select.UseVisualStyleBackColor = true;
+            Select.Click += Select_Click;
+            // 
             // panel1
             // 
             panel1.Controls.Add(Champions);
@@ -91,6 +103,15 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1241, 627);
             panel1.TabIndex = 12;
+            // 
+            // Champions
+            // 
+            Champions.FormattingEnabled = true;
+            Champions.ItemHeight = 15;
+            Champions.Location = new Point(24, 15);
+            Champions.Name = "Champions";
+            Champions.Size = new Size(1193, 604);
+            Champions.TabIndex = 0;
             // 
             // R5Pick
             // 
@@ -137,14 +158,14 @@
             R1Pick.TabIndex = 7;
             R1Pick.Text = "R1";
             // 
-            // label5
+            // B1Pick
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(59, 71);
-            label5.Name = "label5";
-            label5.Size = new Size(20, 15);
-            label5.TabIndex = 6;
-            label5.Text = "B1";
+            B1Pick.AutoSize = true;
+            B1Pick.Location = new Point(59, 71);
+            B1Pick.Name = "B1Pick";
+            B1Pick.Size = new Size(20, 15);
+            B1Pick.TabIndex = 6;
+            B1Pick.Text = "B1";
             // 
             // B5Pick
             // 
@@ -209,15 +230,6 @@
             tabPage3.Text = "IDK Yet";
             tabPage3.UseVisualStyleBackColor = true;
             // 
-            // Champions
-            // 
-            Champions.FormattingEnabled = true;
-            Champions.ItemHeight = 15;
-            Champions.Location = new Point(24, 15);
-            Champions.Name = "Champions";
-            Champions.Size = new Size(1193, 604);
-            Champions.TabIndex = 0;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -245,7 +257,7 @@
         private Label B1Champ;
         private TabPage tabPage2;
         private TabPage tabPage3;
-        private Label label5;
+        private Label B1Pick;
         private Panel panel1;
         private Label R5Pick;
         private Label R4Pick;
@@ -253,5 +265,6 @@
         private Label R2Pick;
         private Label R1Pick;
         private ListBox Champions;
+        private Button Select;
     }
 }
