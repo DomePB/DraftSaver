@@ -27,6 +27,10 @@ namespace DraftSaver
                 {
                     Picked[pickIndex] = test;
                     Picks[pickIndex].Text = test;
+                    Picks[pickIndex].BackColor = Color.White;
+                    if (pickIndex < 9) {
+                        Picks[pickIndex + 1].BackColor = Color.Yellow;
+                    }
                     pickIndex++;
                 }
             }
@@ -50,6 +54,7 @@ namespace DraftSaver
                R5Pick,
 
             };
+            B1Pick.BackColor = Color.Yellow;
         }
     }
 }
