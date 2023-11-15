@@ -30,6 +30,16 @@
         {
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            R5Picture = new PictureBox();
+            R4Picture = new PictureBox();
+            R3Picture = new PictureBox();
+            R2Picture = new PictureBox();
+            R1Picture = new PictureBox();
+            B5Picture = new PictureBox();
+            B4Picture = new PictureBox();
+            B3Picture = new PictureBox();
+            B2Picture = new PictureBox();
+            B1Picture = new PictureBox();
             searchChamps = new TextBox();
             Select = new Button();
             panel1 = new Panel();
@@ -49,6 +59,16 @@
             tabPage3 = new TabPage();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)R5Picture).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)R4Picture).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)R3Picture).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)R2Picture).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)R1Picture).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)B5Picture).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)B4Picture).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)B3Picture).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)B2Picture).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)B1Picture).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -66,6 +86,16 @@
             // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(R5Picture);
+            tabPage1.Controls.Add(R4Picture);
+            tabPage1.Controls.Add(R3Picture);
+            tabPage1.Controls.Add(R2Picture);
+            tabPage1.Controls.Add(R1Picture);
+            tabPage1.Controls.Add(B5Picture);
+            tabPage1.Controls.Add(B4Picture);
+            tabPage1.Controls.Add(B3Picture);
+            tabPage1.Controls.Add(B2Picture);
+            tabPage1.Controls.Add(B1Picture);
             tabPage1.Controls.Add(searchChamps);
             tabPage1.Controls.Add(Select);
             tabPage1.Controls.Add(panel1);
@@ -87,6 +117,86 @@
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Draft";
             tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // R5Picture
+            // 
+            R5Picture.Location = new Point(1487, 652);
+            R5Picture.Name = "R5Picture";
+            R5Picture.Size = new Size(90, 90);
+            R5Picture.TabIndex = 24;
+            R5Picture.TabStop = false;
+            // 
+            // R4Picture
+            // 
+            R4Picture.Location = new Point(1487, 492);
+            R4Picture.Name = "R4Picture";
+            R4Picture.Size = new Size(90, 90);
+            R4Picture.TabIndex = 23;
+            R4Picture.TabStop = false;
+            // 
+            // R3Picture
+            // 
+            R3Picture.Location = new Point(1487, 349);
+            R3Picture.Name = "R3Picture";
+            R3Picture.Size = new Size(90, 90);
+            R3Picture.TabIndex = 22;
+            R3Picture.TabStop = false;
+            // 
+            // R2Picture
+            // 
+            R2Picture.Location = new Point(1487, 187);
+            R2Picture.Name = "R2Picture";
+            R2Picture.Size = new Size(90, 90);
+            R2Picture.TabIndex = 21;
+            R2Picture.TabStop = false;
+            // 
+            // R1Picture
+            // 
+            R1Picture.Location = new Point(1487, 71);
+            R1Picture.Name = "R1Picture";
+            R1Picture.Size = new Size(90, 90);
+            R1Picture.TabIndex = 20;
+            R1Picture.TabStop = false;
+            // 
+            // B5Picture
+            // 
+            B5Picture.Location = new Point(102, 652);
+            B5Picture.Name = "B5Picture";
+            B5Picture.Size = new Size(90, 90);
+            B5Picture.TabIndex = 19;
+            B5Picture.TabStop = false;
+            // 
+            // B4Picture
+            // 
+            B4Picture.Location = new Point(102, 492);
+            B4Picture.Name = "B4Picture";
+            B4Picture.Size = new Size(90, 90);
+            B4Picture.TabIndex = 18;
+            B4Picture.TabStop = false;
+            // 
+            // B3Picture
+            // 
+            B3Picture.Location = new Point(102, 349);
+            B3Picture.Name = "B3Picture";
+            B3Picture.Size = new Size(90, 90);
+            B3Picture.TabIndex = 17;
+            B3Picture.TabStop = false;
+            // 
+            // B2Picture
+            // 
+            B2Picture.Location = new Point(102, 187);
+            B2Picture.Name = "B2Picture";
+            B2Picture.Size = new Size(90, 90);
+            B2Picture.TabIndex = 16;
+            B2Picture.TabStop = false;
+            // 
+            // B1Picture
+            // 
+            B1Picture.Location = new Point(102, 71);
+            B1Picture.Name = "B1Picture";
+            B1Picture.Size = new Size(90, 90);
+            B1Picture.TabIndex = 15;
+            B1Picture.TabStop = false;
             // 
             // searchChamps
             // 
@@ -252,6 +362,16 @@
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)R5Picture).EndInit();
+            ((System.ComponentModel.ISupportInitialize)R4Picture).EndInit();
+            ((System.ComponentModel.ISupportInitialize)R3Picture).EndInit();
+            ((System.ComponentModel.ISupportInitialize)R2Picture).EndInit();
+            ((System.ComponentModel.ISupportInitialize)R1Picture).EndInit();
+            ((System.ComponentModel.ISupportInitialize)B5Picture).EndInit();
+            ((System.ComponentModel.ISupportInitialize)B4Picture).EndInit();
+            ((System.ComponentModel.ISupportInitialize)B3Picture).EndInit();
+            ((System.ComponentModel.ISupportInitialize)B2Picture).EndInit();
+            ((System.ComponentModel.ISupportInitialize)B1Picture).EndInit();
             panel1.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -277,5 +397,15 @@
         private ListBox Champions;
         private Button Select;
         private TextBox searchChamps;
+        private PictureBox B1Picture;
+        private PictureBox R5Picture;
+        private PictureBox R4Picture;
+        private PictureBox R3Picture;
+        private PictureBox R2Picture;
+        private PictureBox R1Picture;
+        private PictureBox B5Picture;
+        private PictureBox B4Picture;
+        private PictureBox B3Picture;
+        private PictureBox B2Picture;
     }
 }
