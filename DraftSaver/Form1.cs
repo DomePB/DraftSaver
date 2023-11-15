@@ -15,12 +15,17 @@ namespace DraftSaver
 
         private void fillChampionsTextBox()
         {
-            Champions.DataSource = ChampionsArr;
+            if (searchChamps.Text.Length == 0)
+            {
+                foreach (string str in ChampionsArr) { 
+                Champions.Items.Add(str);
+                }
+            }
         }
 
         private void Select_Click(object sender, EventArgs e)
         {
-            if (Champions.SelectedItem != null && pickIndex<10)
+            if (Champions.SelectedItem != null && pickIndex < 10)
             {
                 string? test = Champions.SelectedItem as string;
                 if (!Picked.Contains(test))
@@ -28,18 +33,20 @@ namespace DraftSaver
                     Picked[pickIndex] = test;
                     Picks[pickIndex].Text = test;
                     Picks[pickIndex].BackColor = Color.White;
-                    if (pickIndex < 9) {
+                    if (pickIndex < 9)
+                    {
                         Picks[pickIndex + 1].BackColor = Color.Yellow;
                     }
                     pickIndex++;
                 }
             }
 
-          
-           
+
+
 
         }
-        private void InitializeLabels() {
+        private void InitializeLabels()
+        {
             Picks = new Label[]
             {
                B1Pick,
@@ -55,6 +62,17 @@ namespace DraftSaver
 
             };
             B1Pick.BackColor = Color.Yellow;
+        }
+
+        private void searchChamps_TextChanged(object sender, EventArgs e)
+        {
+            Champions.Items.Clear();
+
+            foreach (string str in ChampionsArr) {
+                if (str.StartsWith(searchChamps.Text, StringComparison.CurrentCultureIgnoreCase)) { 
+                    Champions.Items.Add(str);
+                }
+            }
         }
     }
 }

@@ -30,6 +30,7 @@
         {
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            searchChamps = new TextBox();
             Select = new Button();
             panel1 = new Panel();
             Champions = new ListBox();
@@ -65,6 +66,7 @@
             // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(searchChamps);
             tabPage1.Controls.Add(Select);
             tabPage1.Controls.Add(panel1);
             tabPage1.Controls.Add(R5Pick);
@@ -85,6 +87,14 @@
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Draft";
             tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // searchChamps
+            // 
+            searchChamps.Location = new Point(1253, 43);
+            searchChamps.Name = "searchChamps";
+            searchChamps.Size = new Size(163, 23);
+            searchChamps.TabIndex = 14;
+            searchChamps.TextChanged += searchChamps_TextChanged;
             // 
             // Select
             // 
@@ -266,5 +276,6 @@
         private Label R1Pick;
         private ListBox Champions;
         private Button Select;
+        private TextBox searchChamps;
     }
 }
