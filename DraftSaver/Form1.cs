@@ -1,3 +1,5 @@
+using System;
+
 namespace DraftSaver
 {
     public partial class Form1 : Form
@@ -52,20 +54,33 @@ namespace DraftSaver
 
         private void fillChampionsTextBox()
         {
+            ImageList imageList1 = new ImageList();
+            imageList1.ImageSize = new Size(120, 120);
+            Champions.View = View.LargeIcon;
+        
+            foreach (string champ in ChampionsArr) {
+                imageList1.Images.Add(champ,Image.FromFile(getPathtoPNG(champ)));
+            }
+            Champions.LargeImageList = imageList1;
+          
+
             if (searchChamps.Text.Length == 0)
             {
                 foreach (string str in ChampionsArr)
                 {
-                    Champions.Items.Add(str);
+                    ListViewItem item = new ListViewItem();
+                    item.ImageKey = str;
+
+                    Champions.Items.Add(item);
                 }
             }
         }
 
         private void Select_Click(object sender, EventArgs e)
         {
-            if (Champions.SelectedItem != null && pickIndex < 10)
+            if (Champions.SelectedItems != null && pickIndex < 10)
             {
-                string? champion = Champions.SelectedItem as string;
+                string? champion = Champions.SelectedItems[0].ImageKey;
                 if (!Picked.Contains(champion))
                 {
                     Picked[pickIndex] = champion;
@@ -91,20 +106,35 @@ namespace DraftSaver
         private void searchChamps_TextChanged(object sender, EventArgs e)
         {
             Champions.Items.Clear();
+            ImageList imageList1 = new ImageList();
+            imageList1.ImageSize = new Size(120, 120);
 
+            foreach (string champ in ChampionsArr)
+            {
+                if (champ.StartsWith(searchChamps.Text, StringComparison.CurrentCultureIgnoreCase))
+                {
+                    imageList1.Images.Add(champ, Image.FromFile(getPathtoPNG(champ)));
+                   
+                }
+            }
+            Champions.LargeImageList = imageList1;
             foreach (string str in ChampionsArr)
             {
                 if (str.StartsWith(searchChamps.Text, StringComparison.CurrentCultureIgnoreCase))
                 {
-                    Champions.Items.Add(str);
+                    ListViewItem item = new ListViewItem();
+                    item.ImageKey = str;
+
+                    Champions.Items.Add(item);
                 }
             }
         }
 
         private string getPathtoPNG(string champion)
         {
-            string path = "Ressources/Champion Pictures/" + champion + "Square.png";
-            return Path.GetFullPath(path);
+            string championFormatted = champion.Replace(" ", "_");
+            string path = "Ressources/Champion Pictures/" + championFormatted + "Square.png";
+            return File.Exists(path)? Path.GetFullPath(path) :Path.GetFullPath("Ressources/Champion Pictures/UnkownSquare.png");
         }
     }
 }
