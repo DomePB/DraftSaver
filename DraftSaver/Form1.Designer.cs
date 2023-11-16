@@ -43,7 +43,6 @@
             searchChamps = new TextBox();
             Select = new Button();
             panel1 = new Panel();
-            Champions = new ListBox();
             R5Pick = new Label();
             R4Pick = new Label();
             R3Pick = new Label();
@@ -57,6 +56,7 @@
             B1Champ = new Label();
             tabPage2 = new TabPage();
             tabPage3 = new TabPage();
+            Champions = new ListView();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)R5Picture).BeginInit();
@@ -224,15 +224,6 @@
             panel1.Size = new Size(1241, 627);
             panel1.TabIndex = 12;
             // 
-            // Champions
-            // 
-            Champions.FormattingEnabled = true;
-            Champions.ItemHeight = 15;
-            Champions.Location = new Point(24, 15);
-            Champions.Name = "Champions";
-            Champions.Size = new Size(1193, 604);
-            Champions.TabIndex = 0;
-            // 
             // R5Pick
             // 
             R5Pick.AutoSize = true;
@@ -350,6 +341,14 @@
             tabPage3.Text = "IDK Yet";
             tabPage3.UseVisualStyleBackColor = true;
             // 
+            // Champions
+            // 
+            Champions.Location = new Point(0, 0);
+            Champions.Name = "Champions";
+            Champions.Size = new Size(1238, 624);
+            Champions.TabIndex = 0;
+            Champions.UseCompatibleStateImageBehavior = false;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -394,7 +393,6 @@
         private Label R3Pick;
         private Label R2Pick;
         private Label R1Pick;
-        private ListBox Champions;
         private Button Select;
         private TextBox searchChamps;
         private PictureBox B1Picture;
@@ -407,5 +405,6 @@
         private PictureBox B4Picture;
         private PictureBox B3Picture;
         private PictureBox B2Picture;
+        private ListView Champions;
     }
 }
