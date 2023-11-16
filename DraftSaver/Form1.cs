@@ -53,15 +53,22 @@ namespace DraftSaver
         private void fillChampionsTextBox()
         {
             ImageList imageList1 = new ImageList();
+            imageList1.ImageSize = new Size(120, 120);
+            Champions.View = View.LargeIcon;
+            foreach (string champ in ChampionsArr) {
+                imageList1.Images.Add(champ,Image.FromFile(getPathtoPNG(champ)));
+            }
+            Champions.LargeImageList = imageList1;
+          
 
             if (searchChamps.Text.Length == 0)
             {
                 foreach (string str in ChampionsArr)
                 {
-                    imageList1.Images.Add(Image.FromFile(getPathtoPNG(str)));
-                    Champions.LargeImageList = imageList1;
-                    Champions.Items.Add(str);
+                    ListViewItem item = new ListViewItem();
+                    item.ImageKey = str;
 
+                    Champions.Items.Add(item);
                 }
             }
         }
