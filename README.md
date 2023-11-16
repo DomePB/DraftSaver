@@ -1,7 +1,7 @@
 # DraftSaver
 
 TODO:
--Pictures in Listbox, Probably Change to Viewbox or Datagridview or sth
+
 
 - Database Creation and Connection
 - Saving Drafts
