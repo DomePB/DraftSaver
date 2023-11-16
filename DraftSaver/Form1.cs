@@ -1,3 +1,5 @@
+using System;
+
 namespace DraftSaver
 {
     public partial class Form1 : Form
@@ -55,6 +57,7 @@ namespace DraftSaver
             ImageList imageList1 = new ImageList();
             imageList1.ImageSize = new Size(120, 120);
             Champions.View = View.LargeIcon;
+        
             foreach (string champ in ChampionsArr) {
                 imageList1.Images.Add(champ,Image.FromFile(getPathtoPNG(champ)));
             }
@@ -77,7 +80,7 @@ namespace DraftSaver
         {
             if (Champions.SelectedItems != null && pickIndex < 10)
             {
-                string? champion = Champions.SelectedItems[0].Text;
+                string? champion = Champions.SelectedItems[0].ImageKey;
                 if (!Picked.Contains(champion))
                 {
                     Picked[pickIndex] = champion;
@@ -103,12 +106,26 @@ namespace DraftSaver
         private void searchChamps_TextChanged(object sender, EventArgs e)
         {
             Champions.Items.Clear();
+            ImageList imageList1 = new ImageList();
+            imageList1.ImageSize = new Size(120, 120);
 
+            foreach (string champ in ChampionsArr)
+            {
+                if (champ.StartsWith(searchChamps.Text, StringComparison.CurrentCultureIgnoreCase))
+                {
+                    imageList1.Images.Add(champ, Image.FromFile(getPathtoPNG(champ)));
+                   
+                }
+            }
+            Champions.LargeImageList = imageList1;
             foreach (string str in ChampionsArr)
             {
                 if (str.StartsWith(searchChamps.Text, StringComparison.CurrentCultureIgnoreCase))
                 {
-                    Champions.Items.Add(str);
+                    ListViewItem item = new ListViewItem();
+                    item.ImageKey = str;
+
+                    Champions.Items.Add(item);
                 }
             }
         }
@@ -117,7 +134,7 @@ namespace DraftSaver
         {
             string championFormatted = champion.Replace(" ", "_");
             string path = "Ressources/Champion Pictures/" + championFormatted + "Square.png";
-            return File.Exists(path)? Path.GetFullPath(path) :Path.GetFullPath("Ressources/Champion Pictures/" + "Ashe" + "Square.png");
+            return File.Exists(path)? Path.GetFullPath(path) :Path.GetFullPath("Ressources/Champion Pictures/UnkownSquare.png");
         }
     }
 }
