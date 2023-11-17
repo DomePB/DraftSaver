@@ -89,7 +89,7 @@ namespace DraftSaver
             if (Champions.SelectedItems.Count > 0 && pickIndex < 10)
             {
                 string? champion = Champions.SelectedItems[0].ImageKey;
-                if (!Picked.Contains(champion))
+                if (!Picked.Contains(champion) || champion == "AFiller")
                 {
                     Picked[pickIndex] = champion;
                     Picks[pickIndex].Text = champion;
