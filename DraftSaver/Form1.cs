@@ -9,9 +9,10 @@ namespace DraftSaver
         private Label[] Picks;
         private String[] Picked = new string[10];
         private PictureBox[] PictureBoxes;
+        DatabaseConnection dbc = new DatabaseConnection();
         public Form1()
         {
-
+            dbc.Open();
             InitializeComponent();
             fillChampionsTextBox();
             InitializeLabels();
