@@ -57,6 +57,7 @@
             B1Champ = new Label();
             tabPage2 = new TabPage();
             tabPage3 = new TabPage();
+            SaveButton = new Button();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)R5Picture).BeginInit();
@@ -86,6 +87,7 @@
             // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(SaveButton);
             tabPage1.Controls.Add(R5Picture);
             tabPage1.Controls.Add(R4Picture);
             tabPage1.Controls.Add(R3Picture);
@@ -349,6 +351,16 @@
             tabPage3.Text = "IDK Yet";
             tabPage3.UseVisualStyleBackColor = true;
             // 
+            // SaveButton
+            // 
+            SaveButton.Location = new Point(1271, 803);
+            SaveButton.Name = "SaveButton";
+            SaveButton.Size = new Size(75, 23);
+            SaveButton.TabIndex = 1;
+            SaveButton.Text = "Save";
+            SaveButton.UseVisualStyleBackColor = true;
+            SaveButton.Click += SaveButton_Click;
+            // 
             // Form1
             // 
             AcceptButton = Select;
@@ -407,5 +419,6 @@
         private PictureBox B3Picture;
         private PictureBox B2Picture;
         private ListView Champions;
+        private Button SaveButton;
     }
 }

@@ -12,7 +12,7 @@ namespace DraftSaver
         DatabaseConnection dbc = new DatabaseConnection();
         public Form1()
         {
-            dbc.Open();
+
             InitializeComponent();
             fillChampionsTextBox();
             InitializeLabels();
@@ -85,7 +85,7 @@ namespace DraftSaver
 
         private void Select_Click(object sender, EventArgs e)
         {
-            if (Champions.SelectedItems.Count >0 && pickIndex < 10)
+            if (Champions.SelectedItems.Count > 0 && pickIndex < 10)
             {
                 string? champion = Champions.SelectedItems[0].ImageKey;
                 if (!Picked.Contains(champion))
@@ -135,7 +135,10 @@ namespace DraftSaver
                     Champions.Items.Add(item);
                 }
             }
-            Champions.Items[0].Selected = true;
+            if (Champions.Items.Count > 0) {
+                Champions.Items[0].Selected = true;
+            }
+            
         }
 
         private string getPathtoPNG(string champion)
@@ -143,6 +146,11 @@ namespace DraftSaver
             string championFormatted = champion.Replace(" ", "_");
             string path = "Ressources/Champion Pictures/" + championFormatted + "Square.png";
             return File.Exists(path) ? Path.GetFullPath(path) : Path.GetFullPath("Ressources/Champion Pictures/UnkownSquare.png");
+        }
+
+        private void SaveButton_Click(object sender, EventArgs e)
+        {
+            dbc.Save(Picked);
         }
     }
 }
