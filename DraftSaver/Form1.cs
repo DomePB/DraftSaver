@@ -4,7 +4,7 @@ namespace DraftSaver
 {
     public partial class Form1 : Form
     {
-        private String[] ChampionsArr = { "AFiller","Aatrox","Ahri", "Akali","Akshan", "Alistar", "Amumu", "Anivia", "Annie", "Aphelios", "Ashe", "Aurelion Sol", "Azir", "Bard","Bel'Veth", "Blitzcrank", "Brand", "Braum","Briar", "Caitlyn", "Camille","Cassiopeia", "Cho'Gath", "Corki", "Darius", "Diana", "Dr. Mundo", "Draven", "Ekko", "Elise", "Evelynn", "Ezreal", "Fiddlesticks", "Fiora", "Fizz", "Galio", "Gangplank", "Garen", "Gnar", "Gragas", "Graves", "Gwen", "Hecarim", "Heimerdinger", "Illaoi", "Irelia", "Ivern", "Janna", "Jarvan IV", "Jax", "Jayce", "Jhin", "Jinx", "Kai'Sa", "Kalista", "Karma", "Karthus", "Kassadin", "Katarina", "Kayle", "Kayn", "Kennen", "Kha'Zix", "Kindred", "Kled", "Kog'Maw","K'Sante", "LeBlanc", "Lee Sin", "Leona", "Lillia", "Lissandra", "Lucian", "Lulu", "Lux", "Malphite", "Malzahar", "Maokai", "Master Yi","Milio", "Miss Fortune", "Mordekaiser", "Morgana","Naafiri", "Nami", "Nasus", "Nautilus", "Neeko", "Nidalee","Nilah", "Nocturne", "Nunu & Willump", "Olaf", "Orianna", "Ornn", "Pantheon", "Poppy", "Pyke", "Qiyana", "Quinn", "Rakan", "Rammus", "Rek'Sai", "Rell","Renata Glasc", "Renekton", "Rengar", "Riven", "Rumble", "Ryze", "Samira", "Sejuani", "Senna", "Seraphine", "Sett", "Shaco", "Shen", "Shyvana", "Singed", "Sion", "Sivir", "Skarner", "Sona", "Soraka", "Swain", "Sylas", "Syndra", "Tahm Kench", "Taliyah", "Talon", "Taric", "Teemo", "Thresh", "Tristana", "Trundle", "Tryndamere", "Twisted Fate", "Twitch", "Udyr", "Urgot", "Varus", "Vayne", "Veigar", "Vel'Koz","Vex", "Vi", "Viego", "Viktor", "Vladimir", "Volibear", "Warwick", "Wukong", "Xayah", "Xerath", "Xin Zhao", "Yasuo", "Yone", "Yorick", "Yuumi", "Zac", "Zed","Zeri","Ziggs", "Zilean", "Zoe", "Zyra" };
+        private String[] ChampionsArr = { "AFiller", "Aatrox", "Ahri", "Akali", "Akshan", "Alistar", "Amumu", "Anivia", "Annie", "Aphelios", "Ashe", "Aurelion Sol", "Azir", "Bard", "Bel'Veth", "Blitzcrank", "Brand", "Braum", "Briar", "Caitlyn", "Camille", "Cassiopeia", "Cho'Gath", "Corki", "Darius", "Diana", "Dr. Mundo", "Draven", "Ekko", "Elise", "Evelynn", "Ezreal", "Fiddlesticks", "Fiora", "Fizz", "Galio", "Gangplank", "Garen", "Gnar", "Gragas", "Graves", "Gwen", "Hecarim", "Heimerdinger", "Illaoi", "Irelia", "Ivern", "Janna", "Jarvan IV", "Jax", "Jayce", "Jhin", "Jinx", "Kai'Sa", "Kalista", "Karma", "Karthus", "Kassadin", "Katarina", "Kayle", "Kayn", "Kennen", "Kha'Zix", "Kindred", "Kled", "Kog'Maw", "K'Sante", "LeBlanc", "Lee Sin", "Leona", "Lillia", "Lissandra", "Lucian", "Lulu", "Lux", "Malphite", "Malzahar", "Maokai", "Master Yi", "Milio", "Miss Fortune", "Mordekaiser", "Morgana", "Naafiri", "Nami", "Nasus", "Nautilus", "Neeko", "Nidalee", "Nilah", "Nocturne", "Nunu & Willump", "Olaf", "Orianna", "Ornn", "Pantheon", "Poppy", "Pyke", "Qiyana", "Quinn", "Rakan", "Rammus", "Rek'Sai", "Rell", "Renata Glasc", "Renekton", "Rengar", "Riven", "Rumble", "Ryze", "Samira", "Sejuani", "Senna", "Seraphine", "Sett", "Shaco", "Shen", "Shyvana", "Singed", "Sion", "Sivir", "Skarner", "Sona", "Soraka", "Swain", "Sylas", "Syndra", "Tahm Kench", "Taliyah", "Talon", "Taric", "Teemo", "Thresh", "Tristana", "Trundle", "Tryndamere", "Twisted Fate", "Twitch", "Udyr", "Urgot", "Varus", "Vayne", "Veigar", "Vel'Koz", "Vex", "Vi", "Viego", "Viktor", "Vladimir", "Volibear", "Warwick", "Wukong", "Xayah", "Xerath", "Xin Zhao", "Yasuo", "Yone", "Yorick", "Yuumi", "Zac", "Zed", "Zeri", "Ziggs", "Zilean", "Zoe", "Zyra" };
         private int pickIndex = 0;
         private Label[] Picks;
         private String[] Picked = new string[10];
@@ -58,16 +58,17 @@ namespace DraftSaver
             ImageList imageList1 = new ImageList();
             imageList1.ImageSize = new Size(120, 120);
             Champions.View = View.LargeIcon;
-        
-            foreach (string champ in ChampionsArr) {
 
-                 Image img = Image.FromFile(getPathtoPNG(champ));
+            foreach (string champ in ChampionsArr)
+            {
+
+                Image img = Image.FromFile(getPathtoPNG(champ));
                 imageList1.Images.Add(champ, img);
 
 
             }
             Champions.LargeImageList = imageList1;
-          
+
 
             if (searchChamps.Text.Length == 0)
             {
@@ -83,7 +84,7 @@ namespace DraftSaver
 
         private void Select_Click(object sender, EventArgs e)
         {
-            if (Champions.SelectedItems != null && pickIndex < 10)
+            if (Champions.SelectedItems.Count >0 && pickIndex < 10)
             {
                 string? champion = Champions.SelectedItems[0].ImageKey;
                 if (!Picked.Contains(champion))
@@ -119,7 +120,7 @@ namespace DraftSaver
                 if (champ.StartsWith(searchChamps.Text, StringComparison.CurrentCultureIgnoreCase))
                 {
                     imageList1.Images.Add(champ, Image.FromFile(getPathtoPNG(champ)));
-                   
+
                 }
             }
             Champions.LargeImageList = imageList1;
@@ -133,13 +134,14 @@ namespace DraftSaver
                     Champions.Items.Add(item);
                 }
             }
+            Champions.Items[0].Selected = true;
         }
 
         private string getPathtoPNG(string champion)
         {
             string championFormatted = champion.Replace(" ", "_");
             string path = "Ressources/Champion Pictures/" + championFormatted + "Square.png";
-            return File.Exists(path)? Path.GetFullPath(path) :Path.GetFullPath("Ressources/Champion Pictures/UnkownSquare.png");
+            return File.Exists(path) ? Path.GetFullPath(path) : Path.GetFullPath("Ressources/Champion Pictures/UnkownSquare.png");
         }
     }
 }

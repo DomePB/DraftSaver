@@ -43,6 +43,7 @@
             searchChamps = new TextBox();
             Select = new Button();
             panel1 = new Panel();
+            Champions = new ListView();
             R5Pick = new Label();
             R4Pick = new Label();
             R3Pick = new Label();
@@ -56,7 +57,6 @@
             B1Champ = new Label();
             tabPage2 = new TabPage();
             tabPage3 = new TabPage();
-            Champions = new ListView();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)R5Picture).BeginInit();
@@ -224,6 +224,14 @@
             panel1.Size = new Size(1241, 627);
             panel1.TabIndex = 12;
             // 
+            // Champions
+            // 
+            Champions.Location = new Point(0, 0);
+            Champions.Name = "Champions";
+            Champions.Size = new Size(1238, 624);
+            Champions.TabIndex = 0;
+            Champions.UseCompatibleStateImageBehavior = false;
+            // 
             // R5Pick
             // 
             R5Pick.AutoSize = true;
@@ -341,23 +349,16 @@
             tabPage3.Text = "IDK Yet";
             tabPage3.UseVisualStyleBackColor = true;
             // 
-            // Champions
-            // 
-            Champions.Location = new Point(0, 0);
-            Champions.Name = "Champions";
-            Champions.Size = new Size(1238, 624);
-            Champions.TabIndex = 0;
-            Champions.UseCompatibleStateImageBehavior = false;
-            // 
             // Form1
             // 
+            AcceptButton = Select;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1706, 935);
             Controls.Add(tabControl1);
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Form1";
+            Text = "Drafter";
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
