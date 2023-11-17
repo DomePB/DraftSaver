@@ -30,6 +30,7 @@
         {
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            SaveButton = new Button();
             R5Picture = new PictureBox();
             R4Picture = new PictureBox();
             R3Picture = new PictureBox();
@@ -57,7 +58,7 @@
             B1Champ = new Label();
             tabPage2 = new TabPage();
             tabPage3 = new TabPage();
-            SaveButton = new Button();
+            dataGridView1 = new DataGridView();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)R5Picture).BeginInit();
@@ -71,6 +72,8 @@
             ((System.ComponentModel.ISupportInitialize)B2Picture).BeginInit();
             ((System.ComponentModel.ISupportInitialize)B1Picture).BeginInit();
             panel1.SuspendLayout();
+            tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // tabControl1
@@ -119,6 +122,16 @@
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Draft";
             tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // SaveButton
+            // 
+            SaveButton.Location = new Point(1271, 803);
+            SaveButton.Name = "SaveButton";
+            SaveButton.Size = new Size(75, 23);
+            SaveButton.TabIndex = 1;
+            SaveButton.Text = "Save";
+            SaveButton.UseVisualStyleBackColor = true;
+            SaveButton.Click += SaveButton_Click;
             // 
             // R5Picture
             // 
@@ -333,6 +346,7 @@
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(dataGridView1);
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
@@ -351,15 +365,14 @@
             tabPage3.Text = "IDK Yet";
             tabPage3.UseVisualStyleBackColor = true;
             // 
-            // SaveButton
+            // dataGridView1
             // 
-            SaveButton.Location = new Point(1271, 803);
-            SaveButton.Name = "SaveButton";
-            SaveButton.Size = new Size(75, 23);
-            SaveButton.TabIndex = 1;
-            SaveButton.Text = "Save";
-            SaveButton.UseVisualStyleBackColor = true;
-            SaveButton.Click += SaveButton_Click;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(65, 32);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowTemplate.Height = 25;
+            dataGridView1.Size = new Size(1589, 756);
+            dataGridView1.TabIndex = 0;
             // 
             // Form1
             // 
@@ -385,6 +398,8 @@
             ((System.ComponentModel.ISupportInitialize)B2Picture).EndInit();
             ((System.ComponentModel.ISupportInitialize)B1Picture).EndInit();
             panel1.ResumeLayout(false);
+            tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
 
@@ -420,5 +435,6 @@
         private PictureBox B2Picture;
         private ListView Champions;
         private Button SaveButton;
+        private DataGridView dataGridView1;
     }
 }

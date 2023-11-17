@@ -17,6 +17,7 @@ namespace DraftSaver
             fillChampionsTextBox();
             InitializeLabels();
             InitializePicturebox();
+            tabControl1.SelectedIndexChanged += new EventHandler(tabControl1_SelectedIndexchanged);
         }
 
         private void InitializePicturebox()
@@ -135,10 +136,11 @@ namespace DraftSaver
                     Champions.Items.Add(item);
                 }
             }
-            if (Champions.Items.Count > 0) {
+            if (Champions.Items.Count > 0)
+            {
                 Champions.Items[0].Selected = true;
             }
-            
+
         }
 
         private string getPathtoPNG(string champion)
@@ -151,6 +153,19 @@ namespace DraftSaver
         private void SaveButton_Click(object sender, EventArgs e)
         {
             dbc.Save(Picked);
+        }
+
+        private void tabControl1_SelectedIndexchanged(object sender, EventArgs e) { 
+        
+            switch((sender as TabControl).SelectedIndex)
+            {
+                case 0:
+                    break;
+                case 1:
+                    dataGridView1.DataSource = dbc.LoadAllDrafts();
+                    break;
+                default: break;
+            }
         }
     }
 }
