@@ -152,7 +152,15 @@ namespace DraftSaver
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            dbc.Save(Picked);
+            if (Picked[9] != null)
+            {
+                dbc.Save(Picked);
+                MessageBox.Show("Succesfully Saved");
+            }
+            else {
+                MessageBox.Show("NOT FINISHED DRAFTING");
+                    }
+            
         }
 
         private void tabControl1_SelectedIndexchanged(object sender, EventArgs e) { 
