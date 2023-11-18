@@ -57,8 +57,9 @@
             B2Pick = new Label();
             B1Champ = new Label();
             tabPage2 = new TabPage();
-            tabPage3 = new TabPage();
             dataGridView1 = new DataGridView();
+            tabPage3 = new TabPage();
+            NewDraft = new Button();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)R5Picture).BeginInit();
@@ -90,6 +91,7 @@
             // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(NewDraft);
             tabPage1.Controls.Add(SaveButton);
             tabPage1.Controls.Add(R5Picture);
             tabPage1.Controls.Add(R4Picture);
@@ -355,6 +357,15 @@
             tabPage2.Text = "Saved Drafts";
             tabPage2.UseVisualStyleBackColor = true;
             // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(65, 32);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowTemplate.Height = 25;
+            dataGridView1.Size = new Size(1589, 756);
+            dataGridView1.TabIndex = 0;
+            // 
             // tabPage3
             // 
             tabPage3.Location = new Point(4, 24);
@@ -365,14 +376,15 @@
             tabPage3.Text = "IDK Yet";
             tabPage3.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // NewDraft
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(65, 32);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(1589, 756);
-            dataGridView1.TabIndex = 0;
+            NewDraft.Location = new Point(298, 803);
+            NewDraft.Name = "NewDraft";
+            NewDraft.Size = new Size(75, 23);
+            NewDraft.TabIndex = 1;
+            NewDraft.Text = "New Draft";
+            NewDraft.UseVisualStyleBackColor = true;
+            NewDraft.Click += NewDraft_Click;
             // 
             // Form1
             // 
@@ -436,5 +448,6 @@
         private ListView Champions;
         private Button SaveButton;
         private DataGridView dataGridView1;
+        private Button NewDraft;
     }
 }

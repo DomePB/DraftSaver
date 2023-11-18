@@ -157,15 +157,17 @@ namespace DraftSaver
                 dbc.Save(Picked);
                 MessageBox.Show("Succesfully Saved");
             }
-            else {
+            else
+            {
                 MessageBox.Show("NOT FINISHED DRAFTING");
-                    }
-            
+            }
+
         }
 
-        private void tabControl1_SelectedIndexchanged(object sender, EventArgs e) { 
-        
-            switch((sender as TabControl).SelectedIndex)
+        private void tabControl1_SelectedIndexchanged(object sender, EventArgs e)
+        {
+
+            switch ((sender as TabControl).SelectedIndex)
             {
                 case 0:
                     break;
@@ -174,6 +176,14 @@ namespace DraftSaver
                     break;
                 default: break;
             }
+        }
+
+        private void NewDraft_Click(object sender, EventArgs e)
+        {
+            
+            Form1 form = new Form1();
+            form.Show();
+            this.Hide();
         }
     }
 }
