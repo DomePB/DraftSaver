@@ -30,6 +30,7 @@
         {
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            Jungle = new Button();
             ShowAll = new Button();
             Top = new Button();
             NewDraft = new Button();
@@ -62,7 +63,7 @@
             tabPage2 = new TabPage();
             dataGridView1 = new DataGridView();
             tabPage3 = new TabPage();
-            Jungle = new Button();
+            Mid = new Button();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)R5Picture).BeginInit();
@@ -94,6 +95,7 @@
             // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(Mid);
             tabPage1.Controls.Add(Jungle);
             tabPage1.Controls.Add(ShowAll);
             tabPage1.Controls.Add(Top);
@@ -130,6 +132,16 @@
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Draft";
             tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // Jungle
+            // 
+            Jungle.Location = new Point(300, 42);
+            Jungle.Name = "Jungle";
+            Jungle.Size = new Size(75, 23);
+            Jungle.TabIndex = 27;
+            Jungle.Text = "Jungle";
+            Jungle.UseVisualStyleBackColor = true;
+            Jungle.Click += Jungle_Click;
             // 
             // ShowAll
             // 
@@ -412,15 +424,15 @@
             tabPage3.Text = "IDK Yet";
             tabPage3.UseVisualStyleBackColor = true;
             // 
-            // Jungle
+            // Mid
             // 
-            Jungle.Location = new Point(300, 42);
-            Jungle.Name = "Jungle";
-            Jungle.Size = new Size(75, 23);
-            Jungle.TabIndex = 27;
-            Jungle.Text = "Jungle";
-            Jungle.UseVisualStyleBackColor = true;
-            Jungle.Click += Jungle_Click;
+            Mid.Location = new Point(381, 43);
+            Mid.Name = "Mid";
+            Mid.Size = new Size(75, 23);
+            Mid.TabIndex = 1;
+            Mid.Text = "Mid";
+            Mid.UseVisualStyleBackColor = true;
+            Mid.Click += Mid_Click;
             // 
             // Form1
             // 
@@ -488,5 +500,6 @@
         private Button Top;
         private Button ShowAll;
         private Button Jungle;
+        private Button Mid;
     }
 }
