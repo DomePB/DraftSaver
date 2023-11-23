@@ -9,7 +9,7 @@ namespace DraftSaver
         private String[] JungleChamps = { "AFiller", "Amumu", "Bel'Veth", "Briar", "Camille", "Diana", "Dr. Mundo", "Ekko", "Elise", "Evelynn", "Fiddlesticks", "Gragas", "Graves", "Gwen", "Hecarim", "Ivern", "Jarvan IV", "Karthus", "Kayn", "Kha'Zix", "Kindred", "Lee Sin", "lillia", "Maokai", "Master Yi", "Naafiri", "Neeko", "Nidalee", "Nocturne", "Nunu & Willump", "Olaf", "Pantheon", "Poppy", "Rammus", "Rek'Sai", "Rell", "Rengar", "Sejuani", "Shyvana", "Skarner", "Trundle", "Udyr", "Vi", "Viego", "Volibear", "Warwick", "Wukong", "Xin Zhao", "Zac" };
         private String[] MidChamps = { "AFiller", "Ahri", "Akali", "Akshan", "Anivia", "Aurelion Sol", "Azir", "Brand", "Cassiopeia", "Corki", "Diana", "Ekko", "Fizz", "Galio", "Heimerdinger", "Irelia", "Jayce", "Kassadin", "Katarina", "LeBlanc", "Lissandra", "Lux", "Malzahar", "Naafiri", "Neeko", "Orianna", "Pantheon", "Qiyana", "Rumble", "Ryze", "Seraphine", "Swain", "Sylas", "Syndra", "Taliyah", "Talon", "Twisted Fate", "Veigar", "Vel'Koz", "Vex", "Viktor", "Vladimir", "Xerath", "Yasuo", "Yone", "Zed", "Ziggs", "Zoe" };
         private String[] AdcChamps = { "AFiller", "Aphelios", "Ashe", "Caitlyn", "Draven", "Ezreal", "Jhin", "Jinx", "Kai'Sa", "Kalista", "Kog'Maw", "Lucian", "Miss Fortune", "Nilah", "Samira", "Senna", "Sivir", "Tristana", "Twitch", "Varus", "Vayne", "Xayah", "Zeri" };
-
+        private String[] SupportChamps = { "ÄFiller", "Alistar", "Amumu", "Bard", "Blitzcrank", "Brand", "Braum", "Janna", "Karma", "Leona", "Lulu", "Lux", "Milio", "Morgana", "Nami", "Nautilus", "Pantheon", "Poppy", "Pyke", "Rakan", "Rell", "Renata Glasc", "Senna", "Seraphine", "Sett", "Sona", "Soraka", "Tahm Kench", "Taric", "Thresh", "Yuumi", "Zilean", "Zyra" };
         private int pickIndex = 0;
         private Label[] Picks;
         private String[] Picked = new string[10];
@@ -281,6 +281,29 @@ namespace DraftSaver
             if (searchChamps.Text.Length == 0)
             {
                 foreach (string str in AdcChamps)
+                {
+                    ListViewItem item = new ListViewItem();
+                    item.ImageKey = str;
+
+                    Champions.Items.Add(item);
+                }
+            }
+        }
+
+        private void Support_Click(object sender, EventArgs e)
+        {
+            Champions.Clear();
+            ImageList imageList1 = new ImageList();
+            imageList1.ImageSize = new Size(120, 120);
+            foreach (string str in SupportChamps)
+            {
+                imageList1.Images.Add(str, Image.FromFile(getPathtoPNG(str)));
+            }
+            Champions.LargeImageList = imageList1;
+
+            if (searchChamps.Text.Length == 0)
+            {
+                foreach (string str in SupportChamps)
                 {
                     ListViewItem item = new ListViewItem();
                     item.ImageKey = str;

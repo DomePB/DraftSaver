@@ -30,6 +30,7 @@
         {
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            Adc = new Button();
             Mid = new Button();
             Jungle = new Button();
             ShowAll = new Button();
@@ -64,7 +65,7 @@
             tabPage2 = new TabPage();
             dataGridView1 = new DataGridView();
             tabPage3 = new TabPage();
-            Adc = new Button();
+            Support = new Button();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)R5Picture).BeginInit();
@@ -96,6 +97,7 @@
             // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(Support);
             tabPage1.Controls.Add(Adc);
             tabPage1.Controls.Add(Mid);
             tabPage1.Controls.Add(Jungle);
@@ -134,6 +136,16 @@
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Draft";
             tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // Adc
+            // 
+            Adc.Location = new Point(462, 42);
+            Adc.Name = "Adc";
+            Adc.Size = new Size(75, 23);
+            Adc.TabIndex = 28;
+            Adc.Text = "Adc";
+            Adc.UseVisualStyleBackColor = true;
+            Adc.Click += Adc_Click;
             // 
             // Mid
             // 
@@ -436,15 +448,15 @@
             tabPage3.Text = "IDK Yet";
             tabPage3.UseVisualStyleBackColor = true;
             // 
-            // Adc
+            // Support
             // 
-            Adc.Location = new Point(462, 42);
-            Adc.Name = "Adc";
-            Adc.Size = new Size(75, 23);
-            Adc.TabIndex = 28;
-            Adc.Text = "Adc";
-            Adc.UseVisualStyleBackColor = true;
-            Adc.Click += Adc_Click;
+            Support.Location = new Point(543, 43);
+            Support.Name = "Support";
+            Support.Size = new Size(75, 23);
+            Support.TabIndex = 29;
+            Support.Text = "Support";
+            Support.UseVisualStyleBackColor = true;
+            Support.Click += Support_Click;
             // 
             // Form1
             // 
@@ -514,5 +526,6 @@
         private Button Jungle;
         private Button Mid;
         private Button Adc;
+        private Button Support;
     }
 }
