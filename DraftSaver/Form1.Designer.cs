@@ -30,6 +30,7 @@
         {
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            ShowAll = new Button();
             Top = new Button();
             NewDraft = new Button();
             SaveButton = new Button();
@@ -61,7 +62,7 @@
             tabPage2 = new TabPage();
             dataGridView1 = new DataGridView();
             tabPage3 = new TabPage();
-            ShowAll = new Button();
+            Jungle = new Button();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)R5Picture).BeginInit();
@@ -93,6 +94,7 @@
             // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(Jungle);
             tabPage1.Controls.Add(ShowAll);
             tabPage1.Controls.Add(Top);
             tabPage1.Controls.Add(NewDraft);
@@ -128,6 +130,16 @@
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Draft";
             tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // ShowAll
+            // 
+            ShowAll.Location = new Point(1136, 43);
+            ShowAll.Name = "ShowAll";
+            ShowAll.Size = new Size(75, 23);
+            ShowAll.TabIndex = 26;
+            ShowAll.Text = "Show All";
+            ShowAll.UseVisualStyleBackColor = true;
+            ShowAll.Click += ShowAll_Click;
             // 
             // Top
             // 
@@ -400,15 +412,15 @@
             tabPage3.Text = "IDK Yet";
             tabPage3.UseVisualStyleBackColor = true;
             // 
-            // ShowAll
+            // Jungle
             // 
-            ShowAll.Location = new Point(1136, 43);
-            ShowAll.Name = "ShowAll";
-            ShowAll.Size = new Size(75, 23);
-            ShowAll.TabIndex = 26;
-            ShowAll.Text = "Show All";
-            ShowAll.UseVisualStyleBackColor = true;
-            ShowAll.Click += ShowAll_Click;
+            Jungle.Location = new Point(300, 42);
+            Jungle.Name = "Jungle";
+            Jungle.Size = new Size(75, 23);
+            Jungle.TabIndex = 27;
+            Jungle.Text = "Jungle";
+            Jungle.UseVisualStyleBackColor = true;
+            Jungle.Click += Jungle_Click;
             // 
             // Form1
             // 
@@ -475,5 +487,6 @@
         private Button NewDraft;
         private Button Top;
         private Button ShowAll;
+        private Button Jungle;
     }
 }
