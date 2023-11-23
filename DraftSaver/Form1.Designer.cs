@@ -30,6 +30,8 @@
         {
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            Top = new Button();
+            NewDraft = new Button();
             SaveButton = new Button();
             R5Picture = new PictureBox();
             R4Picture = new PictureBox();
@@ -59,7 +61,7 @@
             tabPage2 = new TabPage();
             dataGridView1 = new DataGridView();
             tabPage3 = new TabPage();
-            NewDraft = new Button();
+            ShowAll = new Button();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)R5Picture).BeginInit();
@@ -91,6 +93,8 @@
             // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(ShowAll);
+            tabPage1.Controls.Add(Top);
             tabPage1.Controls.Add(NewDraft);
             tabPage1.Controls.Add(SaveButton);
             tabPage1.Controls.Add(R5Picture);
@@ -124,6 +128,26 @@
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Draft";
             tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // Top
+            // 
+            Top.Location = new Point(219, 43);
+            Top.Name = "Top";
+            Top.Size = new Size(75, 23);
+            Top.TabIndex = 25;
+            Top.Text = "Top";
+            Top.UseVisualStyleBackColor = true;
+            Top.Click += Top_Click;
+            // 
+            // NewDraft
+            // 
+            NewDraft.Location = new Point(298, 803);
+            NewDraft.Name = "NewDraft";
+            NewDraft.Size = new Size(75, 23);
+            NewDraft.TabIndex = 1;
+            NewDraft.Text = "New Draft";
+            NewDraft.UseVisualStyleBackColor = true;
+            NewDraft.Click += NewDraft_Click;
             // 
             // SaveButton
             // 
@@ -376,15 +400,15 @@
             tabPage3.Text = "IDK Yet";
             tabPage3.UseVisualStyleBackColor = true;
             // 
-            // NewDraft
+            // ShowAll
             // 
-            NewDraft.Location = new Point(298, 803);
-            NewDraft.Name = "NewDraft";
-            NewDraft.Size = new Size(75, 23);
-            NewDraft.TabIndex = 1;
-            NewDraft.Text = "New Draft";
-            NewDraft.UseVisualStyleBackColor = true;
-            NewDraft.Click += NewDraft_Click;
+            ShowAll.Location = new Point(1136, 43);
+            ShowAll.Name = "ShowAll";
+            ShowAll.Size = new Size(75, 23);
+            ShowAll.TabIndex = 26;
+            ShowAll.Text = "Show All";
+            ShowAll.UseVisualStyleBackColor = true;
+            ShowAll.Click += ShowAll_Click;
             // 
             // Form1
             // 
@@ -449,5 +473,7 @@
         private Button SaveButton;
         private DataGridView dataGridView1;
         private Button NewDraft;
+        private Button Top;
+        private Button ShowAll;
     }
 }
