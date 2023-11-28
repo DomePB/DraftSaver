@@ -177,7 +177,7 @@ namespace DraftSaver
                 case 0:
                     break;
                 case 1:
-                    dataGridView1.DataSource = dbc.LoadAllDrafts();
+                  //  dataGridView1.DataSource = dbc.LoadAllDrafts();
                     break;
                 default: break;
             }
