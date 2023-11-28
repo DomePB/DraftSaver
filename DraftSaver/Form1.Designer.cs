@@ -30,6 +30,7 @@
         {
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            Support = new Button();
             Adc = new Button();
             Mid = new Button();
             Jungle = new Button();
@@ -63,9 +64,7 @@
             B2Pick = new Label();
             B1Champ = new Label();
             tabPage2 = new TabPage();
-            dataGridView1 = new DataGridView();
             tabPage3 = new TabPage();
-            Support = new Button();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)R5Picture).BeginInit();
@@ -79,8 +78,6 @@
             ((System.ComponentModel.ISupportInitialize)B2Picture).BeginInit();
             ((System.ComponentModel.ISupportInitialize)B1Picture).BeginInit();
             panel1.SuspendLayout();
-            tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // tabControl1
@@ -136,6 +133,16 @@
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Draft";
             tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // Support
+            // 
+            Support.Location = new Point(543, 43);
+            Support.Name = "Support";
+            Support.Size = new Size(75, 23);
+            Support.TabIndex = 29;
+            Support.Text = "Support";
+            Support.UseVisualStyleBackColor = true;
+            Support.Click += Support_Click;
             // 
             // Adc
             // 
@@ -420,7 +427,7 @@
             // 
             // tabPage2
             // 
-            tabPage2.Controls.Add(dataGridView1);
+            tabPage2.AutoScroll = true;
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
@@ -428,15 +435,6 @@
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Saved Drafts";
             tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(65, 32);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(1589, 756);
-            dataGridView1.TabIndex = 0;
             // 
             // tabPage3
             // 
@@ -447,16 +445,6 @@
             tabPage3.TabIndex = 2;
             tabPage3.Text = "IDK Yet";
             tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // Support
-            // 
-            Support.Location = new Point(543, 43);
-            Support.Name = "Support";
-            Support.Size = new Size(75, 23);
-            Support.TabIndex = 29;
-            Support.Text = "Support";
-            Support.UseVisualStyleBackColor = true;
-            Support.Click += Support_Click;
             // 
             // Form1
             // 
@@ -482,8 +470,6 @@
             ((System.ComponentModel.ISupportInitialize)B2Picture).EndInit();
             ((System.ComponentModel.ISupportInitialize)B1Picture).EndInit();
             panel1.ResumeLayout(false);
-            tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
 
@@ -519,7 +505,6 @@
         private PictureBox B2Picture;
         private ListView Champions;
         private Button SaveButton;
-        private DataGridView dataGridView1;
         private Button NewDraft;
         private Button Top;
         private Button ShowAll;

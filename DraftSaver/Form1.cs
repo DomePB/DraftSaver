@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel;
 
 namespace DraftSaver
 {
@@ -25,6 +26,20 @@ namespace DraftSaver
             tabControl1.SelectedIndexChanged += new EventHandler(tabControl1_SelectedIndexchanged);
         }
 
+        public Form1(string[] picked)
+        {
+            Picked = picked;
+            pickIndex = 10;
+            InitializeComponent();
+            fillChampionsTextBox();
+            InitializeLabels();
+            InitializePicturebox();
+            loadPictureboxes(Picked);
+            tabControl1.SelectedIndexChanged += new EventHandler(tabControl1_SelectedIndexchanged);
+
+        }
+
+       
         private void InitializePicturebox()
         {
             PictureBoxes = new PictureBox[]{
@@ -59,6 +74,19 @@ namespace DraftSaver
             };
             B1Pick.BackColor = Color.Yellow;
         }
+        private void loadPictureboxes(string[] picked)
+        {
+            int i = 0;
+            foreach(string champ in picked)
+            {
+                PictureBoxes[i].Image = Image.FromFile(getPathtoPNG(champ));
+                PictureBoxes[i].SizeMode = PictureBoxSizeMode.Zoom;
+                PictureBoxes[i].SizeMode = PictureBoxSizeMode.CenterImage;
+                i++;
+            }
+            
+        }
+
 
         private void fillChampionsTextBox()
         {
@@ -177,10 +205,60 @@ namespace DraftSaver
                 case 0:
                     break;
                 case 1:
-                    dataGridView1.DataSource = dbc.LoadAllDrafts();
+                    //  dataGridView1.DataSource = dbc.LoadAllDrafts();
+                    MatchService matches = new MatchService(dbc);
+                    Label[][] drafts = matches.loadMatches();
+                    int positionmatch = 10;
+                    int positionPick = 15;
+                    int j = 0; //Match id
+                    foreach (Label[] draft in drafts)
+                    {
+                       
+                        int i = 0; // Pick id
+                        foreach (Label pick in draft)
+                        {
+
+                            pick.AutoSize = true;
+                            pick.Name = j.ToString() + i.ToString();
+                            pick.Size = new Size(20, 15);
+                            if (i < 5)
+                            {
+                                pick.Location = new Point(20, positionmatch + positionPick * i);
+                            }
+                            else
+                            {
+                                pick.Location = new Point(80, positionmatch + positionPick * (i - 5));
+                            }
+
+                            tabPage2.Controls.Add(pick);
+
+                            i++;
+
+                        }
+                       
+                        Button load = new Button();
+                        load.Name = j.ToString();
+                        load.Location = new Point(140, positionmatch);
+                        load.Text = "Load";
+                        load.Click += Load_Click;
+                        tabPage2.Controls.Add(load);
+                        positionmatch += 90;
+                        j++;
+                    }
                     break;
                 default: break;
             }
+        }
+
+        private void Load_Click(object? sender, EventArgs e)
+        {
+            Button b = sender as Button;
+            string name = b.Name;
+           
+            String[] champs = { tabPage2.Controls.Find(name + "0", false).ElementAt(0).Text, tabPage2.Controls.Find(name + "5", false).ElementAt(0).Text, tabPage2.Controls.Find(name + "6", false).ElementAt(0).Text, tabPage2.Controls.Find(name + "1", false).ElementAt(0).Text, tabPage2.Controls.Find(name + "2", false).ElementAt(0).Text, tabPage2.Controls.Find(name + "7", false).ElementAt(0).Text, tabPage2.Controls.Find(name + "8", false).ElementAt(0).Text, tabPage2.Controls.Find(name + "3", false).ElementAt(0).Text, tabPage2.Controls.Find(name + "4", false).ElementAt(0).Text, tabPage2.Controls.Find(name + "9", false).ElementAt(0).Text };
+            Form1 form = new Form1(champs);
+            form.Show();
+           
         }
 
         private void NewDraft_Click(object sender, EventArgs e)
