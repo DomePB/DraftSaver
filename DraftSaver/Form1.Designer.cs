@@ -427,6 +427,7 @@
             // 
             // tabPage2
             // 
+            tabPage2.AutoScroll = true;
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);

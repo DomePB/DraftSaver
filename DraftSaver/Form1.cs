@@ -179,24 +179,33 @@ namespace DraftSaver
                 case 1:
                     //  dataGridView1.DataSource = dbc.LoadAllDrafts();
                     MatchService matches = new MatchService(dbc);
-                    matches.createMatch(new string[] { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j" });
-                    matches.createMatch(new string[] { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j" });
                     Label[][] drafts = matches.loadMatches();
-                    int positionmatch = 100;
-                    int positionPick = 10;
+                    int positionmatch = 10;
+                    int positionPick = 15;
                     foreach (Label[] draft in drafts)
                     {
-
+                        int i = 0;
                         foreach (Label pick in draft)
                         {
 
                             pick.AutoSize = true;
-                            pick.Location = new Point(positionmatch + positionPick, 71);
+
                             pick.Size = new Size(20, 15);
+                            if (i < 5)
+                            {
+                                pick.Location = new Point(20, positionmatch + positionPick * i);
+                            }
+                            else
+                            {
+                                pick.Location = new Point(80, positionmatch + positionPick * (i - 5));
+                            }
+
                             tabPage2.Controls.Add(pick);
-                            positionPick += 10;
+
+                            i++;
+
                         }
-                        positionmatch += 100;
+                        positionmatch += 90;
                     }
                     break;
                 default: break;
