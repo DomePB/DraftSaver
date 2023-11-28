@@ -32,6 +32,28 @@ namespace DraftSaver
             R4pick = r4pick;
             R5pick = r5pick;
         }
-       
+
+        public string[] getPicks() { 
+         return new string[] { B1pick, B2pick, B3pick, B4pick, B5pick, R1pick, R2pick, R3pick, R4pick, R5pick };
+        }
+        public void setB1(string B1) {
+            B1pick = B1;
+        }
+        public void setB2(string B2)
+        {
+            B2pick = B2;
+        }
+        public void setB3(string B3)
+        {
+            B3pick = B3;
+        }
+        public void setB4(string B4)
+        {
+            B4pick = B4;
+        }
+        public void setB5(string B5)
+        {
+            B5pick = B5;
+        }
     }
 }
