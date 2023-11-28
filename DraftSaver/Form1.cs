@@ -178,7 +178,7 @@ namespace DraftSaver
                     break;
                 case 1:
                     //  dataGridView1.DataSource = dbc.LoadAllDrafts();
-                    MatchService matches = new MatchService();
+                    MatchService matches = new MatchService(dbc);
                     matches.createMatch(new string[] { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j" });
                     matches.createMatch(new string[] { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j" });
                     Label[][] drafts = matches.loadMatches();
