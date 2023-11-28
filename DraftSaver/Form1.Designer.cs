@@ -65,7 +65,6 @@
             B1Champ = new Label();
             tabPage2 = new TabPage();
             tabPage3 = new TabPage();
-            SavedDrafts = new ListBox();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)R5Picture).BeginInit();
@@ -79,7 +78,6 @@
             ((System.ComponentModel.ISupportInitialize)B2Picture).BeginInit();
             ((System.ComponentModel.ISupportInitialize)B1Picture).BeginInit();
             panel1.SuspendLayout();
-            tabPage2.SuspendLayout();
             SuspendLayout();
             // 
             // tabControl1
@@ -429,7 +427,6 @@
             // 
             // tabPage2
             // 
-            tabPage2.Controls.Add(SavedDrafts);
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
@@ -447,15 +444,6 @@
             tabPage3.TabIndex = 2;
             tabPage3.Text = "IDK Yet";
             tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // SavedDrafts
-            // 
-            SavedDrafts.FormattingEnabled = true;
-            SavedDrafts.ItemHeight = 15;
-            SavedDrafts.Location = new Point(65, 21);
-            SavedDrafts.Name = "SavedDrafts";
-            SavedDrafts.Size = new Size(1544, 859);
-            SavedDrafts.TabIndex = 0;
             // 
             // Form1
             // 
@@ -481,7 +469,6 @@
             ((System.ComponentModel.ISupportInitialize)B2Picture).EndInit();
             ((System.ComponentModel.ISupportInitialize)B1Picture).EndInit();
             panel1.ResumeLayout(false);
-            tabPage2.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -524,6 +511,5 @@
         private Button Mid;
         private Button Adc;
         private Button Support;
-        private ListBox SavedDrafts;
     }
 }
