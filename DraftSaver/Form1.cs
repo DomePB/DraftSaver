@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel;
 
 namespace DraftSaver
 {
@@ -23,6 +24,18 @@ namespace DraftSaver
             InitializeLabels();
             InitializePicturebox();
             tabControl1.SelectedIndexChanged += new EventHandler(tabControl1_SelectedIndexchanged);
+        }
+
+        public Form1(string[] picked)
+        {
+            Picked = picked;
+            pickIndex = 10;
+            InitializeComponent();
+            fillChampionsTextBox();
+            InitializeLabels();
+            InitializePicturebox();
+            tabControl1.SelectedIndexChanged += new EventHandler(tabControl1_SelectedIndexchanged);
+
         }
 
         private void InitializePicturebox()
@@ -205,11 +218,25 @@ namespace DraftSaver
                             i++;
 
                         }
+                       
+                        Button test = new Button();
+                        test.Location = new Point(140, positionmatch);
+                        test.Text = "Load";
+                        test.Click += Load_Click;
+                        tabPage2.Controls.Add(test);
                         positionmatch += 90;
                     }
                     break;
                 default: break;
             }
+        }
+
+        private void Load_Click(object? sender, EventArgs e)
+        {
+            Form1 form = new Form1(Picked);// Champs von Match muessen geladen werden
+            form.Show();
+            throw new NotImplementedException();
+           
         }
 
         private void NewDraft_Click(object sender, EventArgs e)
