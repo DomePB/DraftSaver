@@ -23,13 +23,13 @@ namespace DraftSaver
             loadMatchesfromDatabase();
             Label[][] drafts = new Label[matches.Count][];
 
-           for (int i = 0; i < matches.Count; i++)
+           for (int i = matches.Count-1; i >= 0; i--)
             {
                 string[] picks = matches[i].getPicks();
-                drafts[i] = new Label[10];
+                drafts[matches.Count-i-1] = new Label[10];
                 for(int j = 0;j< picks.Length;j++)
                 {
-                    drafts[i][j] = new Label() { Text = picks[j] };
+                    drafts[matches.Count-i-1][j] = new Label() { Text = picks[j] };
                     
                 }
             }
