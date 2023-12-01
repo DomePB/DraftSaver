@@ -218,9 +218,9 @@ namespace DraftSaver
                         foreach (Label pick in draft)
                         {
                             PictureBox pictureBox = new PictureBox();
-                            pictureBox.Image = Image.FromFile(getPathtoPNG(pick.Text));
+                           
                             pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-                            pictureBox.SizeMode = PictureBoxSizeMode.CenterImage;
+                            pictureBox.Image = Image.FromFile(getPathtoPNG(pick.Text));
                             pictureBox.Size = new Size(20, 20);
                            
                             pick.AutoSize = true;
