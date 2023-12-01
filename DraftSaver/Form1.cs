@@ -206,44 +206,43 @@ namespace DraftSaver
                     break;
                 case 1:
                     //  dataGridView1.DataSource = dbc.LoadAllDrafts();
-                   
-                    Label[][] drafts = matches.loadMatches();
+
+                    Dictionary<int, String[]> drafts = matches.loadMatches();
                     int positionmatch = 10;
                     int positionPick = 15;
                     int j = 0; //Match id
-                    foreach (Label[] draft in drafts)
+                    foreach (var match in drafts.Reverse())
                     {
-
-                        int i = 0; // Pick id
-                        foreach (Label pick in draft)
-                        {
+                        int id = match.Key;
+                        String[] picks = match.Value;
+                        int i = 0;
+                        foreach(string pick in picks){
                             PictureBox pictureBox = new PictureBox();
-
                             pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-                            pictureBox.Image = Image.FromFile(getPathtoPNG(pick.Text));
+                            pictureBox.Image = Image.FromFile(getPathtoPNG(pick));
                             pictureBox.Size = new Size(20, 20);
 
-                            pick.AutoSize = true;
-                            pick.Name = j.ToString() + i.ToString();
-                            pick.Size = new Size(20, 15);
+                           Label label = new Label();
+                            label.AutoSize = true;
+                            label.Size = new Size(20, 15);
+                            label.Text = pick;
+                           
                             if (i < 5)
                             {
-                                pick.Location = new Point(70, positionmatch + positionPick * i);
+                               
+                                label.Location = new Point(70, positionmatch + positionPick * i);
                                 pictureBox.Location = new Point(10, positionmatch + positionPick * i);
                             }
                             else
                             {
-                                pick.Location = new Point(350, positionmatch + positionPick * (i - 5));
+                                label.Location = new Point(350, positionmatch + positionPick * (i - 5));
                                 pictureBox.Location = new Point(300, positionmatch + positionPick * (i - 5));
                             }
-
-                            tabPage2.Controls.Add(pick);
-                            tabPage2.Controls.Add(pictureBox);
-
                             i++;
+                            tabPage2.Controls.Add(pictureBox);
+                            tabPage2.Controls.Add(label);
 
                         }
-
                         Button load = new Button();
                         load.Name = j.ToString();
                         load.Location = new Point(500, positionmatch);
@@ -269,7 +268,7 @@ namespace DraftSaver
             }
         }
 
-        private void Load_Click(object? sender, EventArgs e)
+        private void Load_Click(object? sender, EventArgs e) // has to be fixed
         {
             Button b = sender as Button;
             string name = b.Name;

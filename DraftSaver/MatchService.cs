@@ -13,25 +13,12 @@ namespace DraftSaver
         DatabaseConnection dbc;
         public MatchService(DatabaseConnection conn) { dbc = conn; }
 
-        public void createMatch(string[] picks) { 
-            Match match = new Match(picks[0], picks[1], picks[2], picks[3], picks[4], picks[5], picks[6], picks[7], picks[8], picks[9]);
-            matches.Add(match);
-            dbc.Save(picks);
-        }
-        public Label[][] loadMatches() { // Change Return type to directory
+        public Dictionary<int, String[]> loadMatches() {
 
             loadMatchesfromDatabase();
-            Label[][] drafts = new Label[matches.Count][];
-
-           for (int i = matches.Count-1; i >= 0; i--)
-            {
-                string[] picks = matches[i].getPicks();
-                drafts[matches.Count-i-1] = new Label[10];
-                for(int j = 0;j< picks.Length;j++)
-                {
-                    drafts[matches.Count-i-1][j] = new Label() { Text = picks[j] };
-                    
-                }
+            Dictionary<int, String[]> drafts = new Dictionary<int,String[]>();
+            foreach (var match in matches) {
+                drafts.Add(match.getId(), match.getPicks());
             }
 
             return drafts;
@@ -41,7 +28,7 @@ namespace DraftSaver
             foreach (DataRow match in table.Rows)
             {
                object[] t = match.ItemArray; //Change Datatype
-                matches.Add(new Match(t.ElementAt(1).ToString(), t.ElementAt(2).ToString(), t.ElementAt(3).ToString(), t.ElementAt(4).ToString(), t.ElementAt(5).ToString(), t.ElementAt(6).ToString(), t.ElementAt(7).ToString(), t.ElementAt(8).ToString(), t.ElementAt(9).ToString(), t.ElementAt(10).ToString()));
+                matches.Add(new Match((int)t.ElementAt(0),t.ElementAt(1).ToString(), t.ElementAt(2).ToString(), t.ElementAt(3).ToString(), t.ElementAt(4).ToString(), t.ElementAt(5).ToString(), t.ElementAt(6).ToString(), t.ElementAt(7).ToString(), t.ElementAt(8).ToString(), t.ElementAt(9).ToString(), t.ElementAt(10).ToString()));
                // matches.Add(new Match());
             }
         }
