@@ -217,20 +217,28 @@ namespace DraftSaver
                         int i = 0; // Pick id
                         foreach (Label pick in draft)
                         {
-
+                            PictureBox pictureBox = new PictureBox();
+                            pictureBox.Image = Image.FromFile(getPathtoPNG(pick.Text));
+                            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+                            pictureBox.SizeMode = PictureBoxSizeMode.CenterImage;
+                            pictureBox.Size = new Size(20, 20);
+                           
                             pick.AutoSize = true;
                             pick.Name = j.ToString() + i.ToString();
                             pick.Size = new Size(20, 15);
                             if (i < 5)
                             {
-                                pick.Location = new Point(20, positionmatch + positionPick * i);
+                                pick.Location = new Point(70, positionmatch + positionPick * i);
+                                pictureBox.Location = new Point(10, positionmatch + positionPick * i);
                             }
                             else
                             {
-                                pick.Location = new Point(80, positionmatch + positionPick * (i - 5));
+                                pick.Location = new Point(350, positionmatch + positionPick * (i - 5));
+                                pictureBox.Location = new Point(300, positionmatch + positionPick * (i-5));
                             }
 
                             tabPage2.Controls.Add(pick);
+                            tabPage2.Controls.Add(pictureBox);
 
                             i++;
 
@@ -238,7 +246,7 @@ namespace DraftSaver
                        
                         Button load = new Button();
                         load.Name = j.ToString();
-                        load.Location = new Point(140, positionmatch);
+                        load.Location = new Point(500, positionmatch);
                         load.Text = "Load";
                         load.Click += Load_Click;
                         tabPage2.Controls.Add(load);
