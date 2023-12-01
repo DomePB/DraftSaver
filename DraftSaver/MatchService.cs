@@ -44,8 +44,10 @@ namespace DraftSaver
                 i++;
             }
             return champCountPairs;
-            
-
+        }
+        public String[] getDraftById(int id) { 
+            Match m =dbc.getMatchById(id);
+            return m.getPicks();
         }
     }
 }

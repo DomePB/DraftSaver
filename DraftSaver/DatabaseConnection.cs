@@ -84,5 +84,18 @@ namespace DraftSaver
             }
             return championCounts;
         }
+
+        public Match getMatchById(int id) {
+            Open();
+            SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM SavedDrafts WHERE Id=@id ",cnn);
+            adapter.SelectCommand.Parameters.AddWithValue("@id", id);
+            DataTable drafts = new DataTable();
+            adapter.Fill(drafts);
+            Close();   
+            foreach (DataRow row in drafts.Rows) {
+               return new Match(id,row["B1pick"].ToString(), row["B2pick"].ToString(), row["B3pick"].ToString(), row["B4pick"].ToString(), row["B5pick"].ToString(), row["R1pick"].ToString(), row["R2pick"].ToString(), row["R3pick"].ToString(), row["R4pick"].ToString(), row["R5pick"].ToString());
+            }
+            throw new Exception("NOT FOUND");
+        }
     }
 }

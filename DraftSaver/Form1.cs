@@ -16,9 +16,10 @@ namespace DraftSaver
         private String[] Picked = new string[10];
         private PictureBox[] PictureBoxes;
         DatabaseConnection dbc = new DatabaseConnection();
+        MatchService matches;
         public Form1()
         {
-
+            matches = new MatchService(dbc);
             InitializeComponent();
             fillChampionsTextBox();
             InitializeLabels();
@@ -199,14 +200,12 @@ namespace DraftSaver
 
         private void tabControl1_SelectedIndexchanged(object sender, EventArgs e)
         {
-            MatchService matches = new MatchService(dbc);
+           
             switch ((sender as TabControl).SelectedIndex)
             {
                 case 0:
                     break;
                 case 1:
-                    //  dataGridView1.DataSource = dbc.LoadAllDrafts();
-
                     Dictionary<int, String[]> drafts = matches.loadMatches();
                     int positionmatch = 10;
                     int positionPick = 15;
@@ -244,7 +243,7 @@ namespace DraftSaver
 
                         }
                         Button load = new Button();
-                        load.Name = j.ToString();
+                        load.Name = id.ToString();
                         load.Location = new Point(500, positionmatch);
                         load.Text = "Load";
                         load.Click += Load_Click;
@@ -271,10 +270,11 @@ namespace DraftSaver
         private void Load_Click(object? sender, EventArgs e) // has to be fixed
         {
             Button b = sender as Button;
-            string name = b.Name;
+            
 
-            String[] champs = { tabPage2.Controls.Find(name + "0", false).ElementAt(0).Text, tabPage2.Controls.Find(name + "5", false).ElementAt(0).Text, tabPage2.Controls.Find(name + "6", false).ElementAt(0).Text, tabPage2.Controls.Find(name + "1", false).ElementAt(0).Text, tabPage2.Controls.Find(name + "2", false).ElementAt(0).Text, tabPage2.Controls.Find(name + "7", false).ElementAt(0).Text, tabPage2.Controls.Find(name + "8", false).ElementAt(0).Text, tabPage2.Controls.Find(name + "3", false).ElementAt(0).Text, tabPage2.Controls.Find(name + "4", false).ElementAt(0).Text, tabPage2.Controls.Find(name + "9", false).ElementAt(0).Text };
-            Form1 form = new Form1(champs);
+            String[] champs = matches.getDraftById(int.Parse(b.Name));
+            String[] picks = { champs[0], champs[5], champs[6], champs[1], champs[2], champs[7], champs[8], champs[3], champs[4], champs[9] };
+            Form1 form = new Form1(picks);
             form.Show();
 
         }
