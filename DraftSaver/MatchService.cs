@@ -45,5 +45,20 @@ namespace DraftSaver
                // matches.Add(new Match());
             }
         }
+
+        public Label[] loadPlayedCount() { 
+        Dictionary<string,int> championCount = dbc.getChampionPlayedCount();
+            Label[] champCountPairs = new Label[championCount.Count];
+            int i = 0;
+            foreach (var champ in championCount) { 
+                string champion = champ.Key;
+                int pickedCount = champ.Value;
+                champCountPairs[i] = new Label { Text = champion +" Was picked:  "+ pickedCount + " times." };
+                i++;
+            }
+            return champCountPairs;
+            
+
+        }
     }
 }

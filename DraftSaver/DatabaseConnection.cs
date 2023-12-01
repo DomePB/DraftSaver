@@ -67,6 +67,23 @@ namespace DraftSaver
             return drafts;
             
         }
+        public Dictionary<string, int> getChampionPlayedCount() {
+
+            Open();
+            SqlDataAdapter adapter = new SqlDataAdapter("SELECT Champion, COUNT(*) AS PickedCount\r\nFROM (\r\n    SELECT Champion = B1pick FROM SavedDrafts\r\n    UNION ALL\r\n    SELECT Champion = B2pick FROM SavedDrafts\r\n    UNION ALL\r\n    SELECT Champion = B3pick FROM SavedDrafts\r\n    UNION ALL\r\n    SELECT Champion = B4pick FROM SavedDrafts\r\n    UNION ALL\r\n    SELECT Champion = B5pick FROM SavedDrafts\r\n    UNION ALL\r\n    SELECT Champion = R1pick FROM SavedDrafts\r\n    UNION ALL\r\n    SELECT Champion = R2pick FROM SavedDrafts\r\n    UNION ALL\r\n    SELECT Champion = R3pick FROM SavedDrafts\r\n    UNION ALL\r\n    SELECT Champion = R4pick FROM SavedDrafts\r\n    UNION ALL\r\n    SELECT Champion = R5pick FROM SavedDrafts\r\n) AS PickedChampions\r\nWHERE Champion IS NOT NULL\r\nGROUP BY Champion ORDER BY PickedCount DESC;\r\n", cnn);
+            DataTable drafts = new DataTable();
+            adapter.Fill(drafts);
+            Close();
+
+            Dictionary<string,int> championCounts = new Dictionary<string,int>();
+
+            foreach (DataRow row in drafts.Rows) {
+                string champion = Convert.ToString(row["Champion"].ToString());
+                int pickedCount = Convert.ToInt32(row["PickedCount"]);
+                championCounts.Add(champion, pickedCount);
+            }
+            return championCounts;
+        }
             
     }
 }

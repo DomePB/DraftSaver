@@ -443,7 +443,7 @@
             tabPage3.Padding = new Padding(3);
             tabPage3.Size = new Size(1698, 907);
             tabPage3.TabIndex = 2;
-            tabPage3.Text = "IDK Yet";
+            tabPage3.Text = "Stats";
             tabPage3.UseVisualStyleBackColor = true;
             // 
             // Form1
