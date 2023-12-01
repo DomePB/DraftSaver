@@ -10,15 +10,16 @@ namespace DraftSaver
         private String[] JungleChamps = { "AFiller", "Amumu", "Bel'Veth", "Briar", "Camille", "Diana", "Dr. Mundo", "Ekko", "Elise", "Evelynn", "Fiddlesticks", "Gragas", "Graves", "Gwen", "Hecarim", "Ivern", "Jarvan IV", "Karthus", "Kayn", "Kha'Zix", "Kindred", "Lee Sin", "lillia", "Maokai", "Master Yi", "Naafiri", "Neeko", "Nidalee", "Nocturne", "Nunu & Willump", "Olaf", "Pantheon", "Poppy", "Rammus", "Rek'Sai", "Rell", "Rengar", "Sejuani", "Shyvana", "Skarner", "Trundle", "Udyr", "Vi", "Viego", "Volibear", "Warwick", "Wukong", "Xin Zhao", "Zac" };
         private String[] MidChamps = { "AFiller", "Ahri", "Akali", "Akshan", "Anivia", "Aurelion Sol", "Azir", "Brand", "Cassiopeia", "Corki", "Diana", "Ekko", "Fizz", "Galio", "Heimerdinger", "Irelia", "Jayce", "Kassadin", "Katarina", "LeBlanc", "Lissandra", "Lux", "Malzahar", "Naafiri", "Neeko", "Orianna", "Pantheon", "Qiyana", "Rumble", "Ryze", "Seraphine", "Swain", "Sylas", "Syndra", "Taliyah", "Talon", "Twisted Fate", "Veigar", "Vel'Koz", "Vex", "Viktor", "Vladimir", "Xerath", "Yasuo", "Yone", "Zed", "Ziggs", "Zoe" };
         private String[] AdcChamps = { "AFiller", "Aphelios", "Ashe", "Caitlyn", "Draven", "Ezreal", "Jhin", "Jinx", "Kai'Sa", "Kalista", "Kog'Maw", "Lucian", "Miss Fortune", "Nilah", "Samira", "Senna", "Sivir", "Tristana", "Twitch", "Varus", "Vayne", "Xayah", "Zeri" };
-        private String[] SupportChamps = { "ÄFiller", "Alistar", "Amumu", "Bard", "Blitzcrank", "Brand", "Braum", "Janna", "Karma", "Leona", "Lulu", "Lux", "Milio", "Morgana", "Nami", "Nautilus", "Pantheon", "Poppy", "Pyke", "Rakan", "Rell", "Renata Glasc", "Senna", "Seraphine", "Sett", "Sona", "Soraka", "Tahm Kench", "Taric", "Thresh", "Yuumi", "Zilean", "Zyra" };
+        private String[] SupportChamps = { "AFiller", "Alistar", "Amumu", "Bard", "Blitzcrank", "Brand", "Braum", "Janna", "Karma", "Leona", "Lulu", "Lux", "Milio", "Morgana", "Nami", "Nautilus", "Pantheon", "Poppy", "Pyke", "Rakan", "Rell", "Renata Glasc", "Senna", "Seraphine", "Sett", "Sona", "Soraka", "Tahm Kench", "Taric", "Thresh", "Yuumi", "Zilean", "Zyra" };
         private int pickIndex = 0;
         private Label[] Picks;
         private String[] Picked = new string[10];
         private PictureBox[] PictureBoxes;
         DatabaseConnection dbc = new DatabaseConnection();
+        MatchService matches;
         public Form1()
         {
-
+            matches = new MatchService(dbc);
             InitializeComponent();
             fillChampionsTextBox();
             InitializeLabels();
@@ -199,53 +200,50 @@ namespace DraftSaver
 
         private void tabControl1_SelectedIndexchanged(object sender, EventArgs e)
         {
-            MatchService matches = new MatchService(dbc);
+           
             switch ((sender as TabControl).SelectedIndex)
             {
                 case 0:
                     break;
                 case 1:
-                    //  dataGridView1.DataSource = dbc.LoadAllDrafts();
-                   
-                    Label[][] drafts = matches.loadMatches();
+                    Dictionary<int, String[]> drafts = matches.loadMatches();
                     int positionmatch = 10;
                     int positionPick = 15;
                     int j = 0; //Match id
-                    foreach (Label[] draft in drafts)
+                    foreach (var match in drafts.Reverse())
                     {
-
-                        int i = 0; // Pick id
-                        foreach (Label pick in draft)
-                        {
+                        int id = match.Key;
+                        String[] picks = match.Value;
+                        int i = 0;
+                        foreach(string pick in picks){
                             PictureBox pictureBox = new PictureBox();
-
                             pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-                            pictureBox.Image = Image.FromFile(getPathtoPNG(pick.Text));
+                            pictureBox.Image = Image.FromFile(getPathtoPNG(pick));
                             pictureBox.Size = new Size(20, 20);
 
-                            pick.AutoSize = true;
-                            pick.Name = j.ToString() + i.ToString();
-                            pick.Size = new Size(20, 15);
+                           Label label = new Label();
+                            label.AutoSize = true;
+                            label.Size = new Size(20, 15);
+                            label.Text = pick;
+                           
                             if (i < 5)
                             {
-                                pick.Location = new Point(70, positionmatch + positionPick * i);
+                               
+                                label.Location = new Point(70, positionmatch + positionPick * i);
                                 pictureBox.Location = new Point(10, positionmatch + positionPick * i);
                             }
                             else
                             {
-                                pick.Location = new Point(350, positionmatch + positionPick * (i - 5));
+                                label.Location = new Point(350, positionmatch + positionPick * (i - 5));
                                 pictureBox.Location = new Point(300, positionmatch + positionPick * (i - 5));
                             }
-
-                            tabPage2.Controls.Add(pick);
-                            tabPage2.Controls.Add(pictureBox);
-
                             i++;
+                            tabPage2.Controls.Add(pictureBox);
+                            tabPage2.Controls.Add(label);
 
                         }
-
                         Button load = new Button();
-                        load.Name = j.ToString();
+                        load.Name = id.ToString();
                         load.Location = new Point(500, positionmatch);
                         load.Text = "Load";
                         load.Click += Load_Click;
@@ -269,13 +267,14 @@ namespace DraftSaver
             }
         }
 
-        private void Load_Click(object? sender, EventArgs e)
+        private void Load_Click(object? sender, EventArgs e) // has to be fixed
         {
             Button b = sender as Button;
-            string name = b.Name;
+            
 
-            String[] champs = { tabPage2.Controls.Find(name + "0", false).ElementAt(0).Text, tabPage2.Controls.Find(name + "5", false).ElementAt(0).Text, tabPage2.Controls.Find(name + "6", false).ElementAt(0).Text, tabPage2.Controls.Find(name + "1", false).ElementAt(0).Text, tabPage2.Controls.Find(name + "2", false).ElementAt(0).Text, tabPage2.Controls.Find(name + "7", false).ElementAt(0).Text, tabPage2.Controls.Find(name + "8", false).ElementAt(0).Text, tabPage2.Controls.Find(name + "3", false).ElementAt(0).Text, tabPage2.Controls.Find(name + "4", false).ElementAt(0).Text, tabPage2.Controls.Find(name + "9", false).ElementAt(0).Text };
-            Form1 form = new Form1(champs);
+            String[] champs = matches.getDraftById(int.Parse(b.Name));
+            String[] picks = { champs[0], champs[5], champs[6], champs[1], champs[2], champs[7], champs[8], champs[3], champs[4], champs[9] };
+            Form1 form = new Form1(picks);
             form.Show();
 
         }
