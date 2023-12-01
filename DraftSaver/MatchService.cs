@@ -18,8 +18,8 @@ namespace DraftSaver
             matches.Add(match);
             dbc.Save(picks);
         }
-        public Label[][] loadMatches() { // HAVE TO CHANGE RETURN TYPE AND NOT USE LISTVIEW WANT TO RETURN List of Textboxes and a button hmmm
-                                                               //   ListView drafts = new ListView();
+        public Label[][] loadMatches() { // Change Return type to directory
+
             loadMatchesfromDatabase();
             Label[][] drafts = new Label[matches.Count][];
 

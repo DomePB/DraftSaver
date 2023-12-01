@@ -84,6 +84,5 @@ namespace DraftSaver
             }
             return championCounts;
         }
-            
     }
 }
