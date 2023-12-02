@@ -206,52 +206,7 @@ namespace DraftSaver
                 case 0:
                     break;
                 case 1:
-                    tabPage2.Controls.Clear();
-                    Dictionary<int, String[]> drafts = matches.loadMatches();
-                    int positionmatch = 10;
-                    int positionPick = 15;
-                    int j = 0; //Match id
-                    foreach (var match in drafts.Reverse())
-                    {
-                        int id = match.Key;
-                        String[] picks = match.Value;
-                        int i = 0;
-                        foreach(string pick in picks){
-                            PictureBox pictureBox = new PictureBox();
-                            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-                            pictureBox.Image = Image.FromFile(getPathtoPNG(pick));
-                            pictureBox.Size = new Size(20, 20);
-
-                           Label label = new Label();
-                            label.AutoSize = true;
-                            label.Size = new Size(20, 15);
-                            label.Text = pick;
-                           
-                            if (i < 5)
-                            {
-                               
-                                label.Location = new Point(70, positionmatch + positionPick * i);
-                                pictureBox.Location = new Point(10, positionmatch + positionPick * i);
-                            }
-                            else
-                            {
-                                label.Location = new Point(350, positionmatch + positionPick * (i - 5));
-                                pictureBox.Location = new Point(300, positionmatch + positionPick * (i - 5));
-                            }
-                            i++;
-                            tabPage2.Controls.Add(pictureBox);
-                            tabPage2.Controls.Add(label);
-
-                        }
-                        Button load = new Button();
-                        load.Name = id.ToString();
-                        load.Location = new Point(500, positionmatch);
-                        load.Text = "Load";
-                        load.Click += Load_Click;
-                        tabPage2.Controls.Add(load);
-                        positionmatch += 90;
-                        j++;
-                    }
+                    TabPage2Loading();
                     break;
                 case 2:
                     Label[] playedCount = matches.loadPlayedCount();
@@ -266,6 +221,72 @@ namespace DraftSaver
                     break;
                 default: break;
             }
+        }
+
+        private void TabPage2Loading()
+        {
+            tabPage2.Controls.Clear();
+            Dictionary<int, String[]> drafts = matches.loadMatches();
+            int positionmatch = 10;
+            int positionPick = 15;
+            int j = 0; //Match id
+            foreach (var match in drafts.Reverse())
+            {
+                int id = match.Key;
+                String[] picks = match.Value;
+                int i = 0;
+                foreach (string pick in picks)
+                {
+                    PictureBox pictureBox = new PictureBox();
+                    pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+                    pictureBox.Image = Image.FromFile(getPathtoPNG(pick));
+                    pictureBox.Size = new Size(20, 20);
+
+                    Label label = new Label();
+                    label.AutoSize = true;
+                    label.Size = new Size(20, 15);
+                    label.Text = pick;
+
+                    if (i < 5)
+                    {
+
+                        label.Location = new Point(70, positionmatch + positionPick * i);
+                        pictureBox.Location = new Point(10, positionmatch + positionPick * i);
+                    }
+                    else
+                    {
+                        label.Location = new Point(350, positionmatch + positionPick * (i - 5));
+                        pictureBox.Location = new Point(300, positionmatch + positionPick * (i - 5));
+                    }
+                    i++;
+                    tabPage2.Controls.Add(pictureBox);
+                    tabPage2.Controls.Add(label);
+
+                }
+                Button load = new Button();
+                load.Name = id.ToString();
+                load.Location = new Point(500, positionmatch);
+                load.Text = "Load";
+                load.Click += Load_Click;
+                tabPage2.Controls.Add(load);
+
+                Button delete = new Button();
+                delete.Name = id.ToString();
+                delete.Location = new Point(500, positionmatch + 30);
+                delete.Text = "Delete";
+                delete.Click += Delete_Click;
+                tabPage2.Controls.Add(delete);
+                positionmatch += 90;
+                j++;
+            }
+        }
+
+        private void Delete_Click(object? sender, EventArgs e)
+        {
+            Button b = sender as Button;
+            bool deletion = matches.deleteDraftById(int.Parse(b.Name));
+            TabPage2Loading();
+           
         }
 
         private void Load_Click(object? sender, EventArgs e) // has to be fixed

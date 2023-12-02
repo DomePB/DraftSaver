@@ -55,5 +55,18 @@ namespace DraftSaver
             Match m =dbc.getMatchById(id);
             return m.getPicks();
         }
+        public bool deleteDraftById(int id) {
+            try
+            {
+                Match m = dbc.getMatchById(id);
+                dbc.deleteMatchById(id);
+                matches.Remove(m);
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
     }
 }

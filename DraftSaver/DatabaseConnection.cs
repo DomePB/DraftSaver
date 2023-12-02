@@ -97,5 +97,14 @@ namespace DraftSaver
             }
             throw new Exception("NOT FOUND");
         }
+
+        public bool deleteMatchById(int id) {
+            Open();
+            SqlCommand sqlCommand = new SqlCommand("DELETE FROM SavedDrafts WHERE id=@id",cnn);
+            sqlCommand.Parameters.AddWithValue ("@id", id);
+            sqlCommand.ExecuteNonQuery();
+            Close();
+            return true;
+        }
     }
 }
