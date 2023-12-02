@@ -210,6 +210,7 @@ namespace DraftSaver
                     TabPage2Loading();
                     break;
                 case 2:
+                    tabPage3.Controls.Clear();
                     Label[] playedCount = matches.loadPlayedCount();
                     int positionChamp = 10;
                     foreach (Label l in playedCount) { 
