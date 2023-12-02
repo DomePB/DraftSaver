@@ -58,5 +58,11 @@ namespace DraftSaver
             B5pick = B5;
         }
         public int getId() {  return id; }
+
+        public override bool Equals(object? obj)
+        {
+            return obj is Match match &&
+                   id == match.id;
+        }
     }
 }

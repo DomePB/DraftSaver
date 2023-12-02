@@ -27,8 +27,14 @@ namespace DraftSaver
             DataTable table = dbc.LoadAllDrafts();
             foreach (DataRow match in table.Rows)
             {
+              
                object[] t = match.ItemArray; //Change Datatype
-                matches.Add(new Match((int)t.ElementAt(0),t.ElementAt(1).ToString(), t.ElementAt(2).ToString(), t.ElementAt(3).ToString(), t.ElementAt(4).ToString(), t.ElementAt(5).ToString(), t.ElementAt(6).ToString(), t.ElementAt(7).ToString(), t.ElementAt(8).ToString(), t.ElementAt(9).ToString(), t.ElementAt(10).ToString()));
+                Match m = new Match((int)t.ElementAt(0), t.ElementAt(1).ToString(), t.ElementAt(2).ToString(), t.ElementAt(3).ToString(), t.ElementAt(4).ToString(), t.ElementAt(5).ToString(), t.ElementAt(6).ToString(), t.ElementAt(7).ToString(), t.ElementAt(8).ToString(), t.ElementAt(9).ToString(), t.ElementAt(10).ToString());
+               
+                if (!matches.Contains(m)) {
+                    matches.Add(m);
+                }
+               
                // matches.Add(new Match());
             }
         }

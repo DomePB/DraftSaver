@@ -206,6 +206,7 @@ namespace DraftSaver
                 case 0:
                     break;
                 case 1:
+                    tabPage2.Controls.Clear();
                     Dictionary<int, String[]> drafts = matches.loadMatches();
                     int positionmatch = 10;
                     int positionPick = 15;
