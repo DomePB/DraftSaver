@@ -29,6 +29,7 @@ namespace DraftSaver
 
         public Form1(string[] picked)
         {
+            matches = new MatchService(dbc);
             Picked = picked;
             pickIndex = 10;
             InitializeComponent();
